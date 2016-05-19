@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\MainMenu.cs" />
+    <Compile Include="Assets\Script\RemoveRubble.cs" />
     <Compile Include="Assets\Script\TheStack.cs" />
   </ItemGroup>
   <ItemGroup>

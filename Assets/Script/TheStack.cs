@@ -8,7 +8,6 @@ public class TheStack : MonoBehaviour {
     public Color32[] gameColors = new Color32[4];
     public Text scoreText;
     public GameObject endPanel;
-    public string nameScene;
 
     private const float BOUND_SIZE = 6.0f;
     public Material stackMat;
