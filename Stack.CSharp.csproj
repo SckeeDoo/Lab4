@@ -63,10 +63,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\MainMenu.cs" />
     <Compile Include="Assets\Script\TheStack.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Script\VertexColor.shader" />
+    <None Include="Assets\Artwork\VertexColor.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

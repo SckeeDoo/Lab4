@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TheStack : MonoBehaviour {
 
     public Color32[] gameColors = new Color32[4];
     public Text scoreText;
+    public GameObject endPanel;
+    public string nameScene;
 
     private const float BOUND_SIZE = 6.0f;
     public Material stackMat;
@@ -249,8 +252,15 @@ public class TheStack : MonoBehaviour {
     private void EndGame()
     {
         isDead = true;
+        endPanel.SetActive(true);
         Debug.Log("Looser!");
         theStack[stackIndex].AddComponent<Rigidbody>();
+
+    }
+
+    public void OnButtonClick(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
 
     }
 }
