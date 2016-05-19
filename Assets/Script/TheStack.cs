@@ -17,6 +17,9 @@ public class TheStack : MonoBehaviour {
     private Vector3 desirePossition;
     private Vector3 lastTilePosition;
     private const float ERROR_MARGIN = 0.1f;
+    private const float STACK_BOUNDS_GAIN = 0.25f;
+    private const int COMBO_START_GAIN = 5;
+
 
     private bool isMovingOnX = true;
     private bool isDead = false;
@@ -74,6 +77,7 @@ public class TheStack : MonoBehaviour {
         }
         desirePossition = (Vector3.down) * scoreCount;
         theStack[stackIndex].transform.localPosition = new Vector3(0, scoreCount, 0);
+        theStack[stackIndex].transform.localScale = new Vector3(stackBounds.x, 1, stackBounds.y);
 
     }
     private bool PlaceTile()
@@ -97,6 +101,25 @@ public class TheStack : MonoBehaviour {
                 t.localPosition = new Vector3(middle - (lastTilePosition.x / 2), scoreCount, lastTilePosition.z);
 
             }
+            else
+            {
+                if (combo > COMBO_START_GAIN)
+                {
+                    if (stackBounds.x > BOUND_SIZE)
+                    {
+                        stackBounds.x = BOUND_SIZE;
+                    }
+                    stackBounds.x += STACK_BOUNDS_GAIN;
+                    float middle = lastTilePosition.z + t.localPosition.z / 2;
+                    t.localScale = new Vector3(stackBounds.x, 1, stackBounds.y);
+                    t.localPosition = new Vector3(lastTilePosition.x, scoreCount, middle - (lastTilePosition.z / 2));
+                }
+                combo++;
+                t.localPosition = new Vector3(lastTilePosition.x, scoreCount, lastTilePosition.z);
+
+
+
+            }
 
         }
         else
@@ -114,6 +137,22 @@ public class TheStack : MonoBehaviour {
                 float middle = lastTilePosition.z + t.localPosition.z / 2;
                 t.localScale = new Vector3(stackBounds.x, 1, stackBounds.y);
                 t.localPosition = new Vector3(lastTilePosition.x, scoreCount, middle - (lastTilePosition.z / 2));
+            }
+            else
+            {
+                if (combo > COMBO_START_GAIN)
+                {
+                    stackBounds.y += STACK_BOUNDS_GAIN;
+                    if(stackBounds.y > BOUND_SIZE)
+                    {
+                        stackBounds.y = BOUND_SIZE;
+                    }
+                    float middle = lastTilePosition.z + t.localPosition.z / 2;
+                    t.localScale = new Vector3(stackBounds.x, 1, stackBounds.y);
+                    t.localPosition = new Vector3(lastTilePosition.x, scoreCount, middle - (lastTilePosition.z / 2));
+                }
+                combo++;
+                t.localPosition = new Vector3(lastTilePosition.x, scoreCount, lastTilePosition.z);
             }
         }
         if(isMovingOnX)
