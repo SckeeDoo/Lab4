@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TheStack : MonoBehaviour {
 
-    public Color32[] gameColors = new Color32[4];
+    public Color32[] gameColors = new Color32[12];
     public Text scoreText;
     public GameObject endPanel;
 
@@ -226,25 +226,58 @@ public class TheStack : MonoBehaviour {
 
         for (int i = 0; i < vertices.Length; i++)
         {
-            colors[i] = Lerp4(gameColors[0], gameColors[1], gameColors[2], gameColors[3], f);
+            colors[i] = Lerp4(gameColors[0], gameColors[1], gameColors[2], gameColors[3], gameColors[4], gameColors[5], gameColors[6]
+                , gameColors[7], gameColors[8], gameColors[9], gameColors[10], gameColors[11], f);
         }
         mesh.colors32 = colors;
 
     }
 
-    private Color32 Lerp4(Color32 a, Color32 b, Color32 c, Color32 d, float t)
+    private Color32 Lerp4(Color32 a, Color32 b, Color32 c, Color32 d, Color32 e, Color32 f, Color32 g, Color32 h, Color32 i, Color32 j, Color32 y, Color32 x, float t)
     {
         if (t < 0.33f)
         {
             return Color.Lerp(a, b, t / 0.33f);
         }
-        else if(t < 0.66f)
+        else if(t < 0.33f)
         {
             return Color.Lerp(b, c, (t - 0.33f) / 0.33f);
         }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(c, d, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(d, e, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(e, f, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(f, g, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(g, h, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(h, i, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(i, j, (t - 0.33f) / 0.33f);
+        }
+        else if (t < 0.33f)
+        {
+            return Color.Lerp(j, y, (t - 0.33f) / 0.33f);
+        }
         else
         {
-            return Color.Lerp(c, d, (t - 0.66f) / 0.66f);
+            return Color.Lerp(y, x, (t - 0.33f) / 0.33f);
         }
     }
 
