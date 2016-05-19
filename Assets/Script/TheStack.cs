@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class TheStack : MonoBehaviour {
 
     public Color32[] gameColors = new Color32[4];
+    public Text scoreText;
 
     private const float BOUND_SIZE = 6.0f;
     public Material stackMat;
@@ -33,6 +35,7 @@ public class TheStack : MonoBehaviour {
         for(int i = 0; i < transform.childCount; i++)
         {
             theStack[i] = transform.GetChild(i). gameObject;
+            ColorMesh(theStack[i].GetComponent<MeshFilter>().mesh);
         }
 
         stackIndex = transform.childCount - 1;
@@ -58,6 +61,7 @@ public class TheStack : MonoBehaviour {
             {
                 SpawTile();
                 scoreCount++;
+                scoreText.text = scoreCount.ToString();
             }
             else
             {
@@ -175,7 +179,7 @@ public class TheStack : MonoBehaviour {
                         ? t.position.z + (t.localScale.z / 2)
                         : t.position.z - (t.localScale.z / 2)),
 
-                        new Vector3(Mathf.Abs(deltaZ), 1, t.localScale.z)
+                        new Vector3(t.localScale.x, 1, Mathf.Abs(deltaZ))
 
                    );
                 t.localPosition = new Vector3(lastTilePosition.x, scoreCount, middle - (lastTilePosition.z / 2));
