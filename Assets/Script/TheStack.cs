@@ -253,7 +253,11 @@ public class TheStack : MonoBehaviour {
     {
         isDead = true;
         endPanel.SetActive(true);
-        Debug.Log("Looser!");
+        
+        if(PlayerPrefs.GetInt("score") < scoreCount)
+        {
+            PlayerPrefs.SetInt("score", scoreCount);
+        }
         theStack[stackIndex].AddComponent<Rigidbody>();
 
     }
