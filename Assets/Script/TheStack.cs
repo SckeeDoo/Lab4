@@ -16,9 +16,9 @@ public class TheStack : MonoBehaviour {
     private float secondaryPosition;
     private Vector3 desirePossition;
     private Vector3 lastTilePosition;
-    private const float ERROR_MARGIN = 0.1f;
+    private const float ERROR_MARGIN = 0.4f;
     private const float STACK_BOUNDS_GAIN = 0.25f;
-    private const int COMBO_START_GAIN = 5;
+    private const int COMBO_START_GAIN = 3;
 
 
     private bool isMovingOnX = true;
